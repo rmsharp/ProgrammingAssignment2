@@ -9,7 +9,7 @@
 #' get the value of the matrix
 #' set the value of the inverted matrix
 #' get the value of the inverted matrix
-
+#' @param x matrix for which an inverse is sought
 makeCacheMatrix <- function(x = matrix()) {
     i <- NULL
     set <- function(y) {
@@ -32,15 +32,16 @@ makeCacheMatrix <- function(x = matrix()) {
 #' calculated. If so, it gets the inverse from the cache and skips the 
 #' computation. Otherwise, it calculates the inverse of the data and sets 
 #' the value of the inverse in the cache via the setinverse function.
+#' @param x makeCacheMatrix object
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-  i <- x$getinverse()
-  if(!is.null(i)) {
+  inverse <- x$getinverse()
+  if(!is.null(inverse)) {
     message("getting cached data")
     return(i)
   }
   data <- x$get()
-  i <- solve(data, ...)
-  x$setinverse(i)
-  i
+  inverse <- solve(data, ...)
+  x$setinverse(inverse)
+  inverse
 }
