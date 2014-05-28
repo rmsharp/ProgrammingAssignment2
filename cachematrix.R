@@ -11,14 +11,14 @@
 #' get the value of the inverted matrix
 #' @param x matrix for which an inverse is sought
 makeCacheMatrix <- function(x = matrix()) {
-    i <- NULL
+    inverse <- NULL
     set <- function(y) {
       x <<- y
-      i <<- NULL
+      inverse <<- NULL
     }
     get <- function() x
-    setinverse <- function(inverse) i <<- inverse
-    getinverse <- function() i
+    setinverse <- function(inverse) inverse <<- inverse
+    getinverse <- function() inverse
     list(set = set, get = get,
          setinverse = setinverse,
          getinverse = getinverse)
